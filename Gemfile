@@ -3,13 +3,13 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.3'
 gem 'thin'
 
-
 group :production do
   gem 'pg'
 end
 
 group :development, :test do
   gem 'sqlite3'
+  gem "rspec-rails", "~> 2.6"
 end
 
 # Gems used only for assets and not required
