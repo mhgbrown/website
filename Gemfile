@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 gem 'thin'
+gem 'heroku'
 
 group :production do
   gem 'pg'
