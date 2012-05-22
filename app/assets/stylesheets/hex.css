@@ -1,8 +1,8 @@
 /* http://jtauber.github.com/articles/css-hexagon.html */
 .hex {
     float: left;
-    margin-right: -26px;
-    margin-bottom: -50px;
+    margin-right: -23px;
+    margin-bottom: -47px;
 }
 .hex .left {
     float: left;
@@ -28,5 +28,5 @@
     clear: left;
 }
 .hex.even {
-    margin-top: 53px;
+    margin-top: 56px;
 }
