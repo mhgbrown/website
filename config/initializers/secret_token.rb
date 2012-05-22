@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-MorganIo::Application.config.secret_token = '56e0c8946969df050bcfbcb5656e8c53b1b7d25c55ee7af6620d861e1221ac0fb4e92e6b4e8abf5a8ee5125d22a96cb3f0489ca0af3a27afdbb1689d8db2c61b'
+MorganIo::Application.config.secret_token = 'a8d2680cd37524cb255e031b29431789bf1477bc6e646ae72a3a22b0a4a4438269fb1f241c3a596a0b743884905c89e75048aa13e71d466d6cb798aa91d00706'

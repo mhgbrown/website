@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Morgan I/O</title>
-  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Varela%7CLobster&amp;v2"%>
-  <%= stylesheet_link_tag "application" %>
+  <title>MorganIo</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="navigation">
-	<div class="app-title">morgan.io</div>
-</div>
-<div class="content">
+
 <%= yield %>
-</div>
-  <%= javascript_include_tag "application" %>
+
 </body>
 </html>
