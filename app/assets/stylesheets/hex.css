@@ -36,6 +36,31 @@
     border-bottom: 52px solid transparent;
 }
 
+.hex.yellow .left{
+	border-right-color: #D4CA7F;
+}
+
+.hex.yellow .middle{
+	background: #D4CA7F;
+}
+
+.hex.yellow .right{
+	border-left-color: #D4CA7F;
+}
+
+.hex.pink .left{
+	border-right-color: #A1507A;
+}
+
+.hex.pink .middle{
+	background: #A1507A;
+}
+
+.hex.pink .right{
+	border-left-color: #A1507A;
+}
+
+
 .hex.even {
     margin-top: 56px;
 }
