@@ -2,20 +2,25 @@
 <html>
 <head>
   <title>Morgan Brown</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
 	   <div class="navbar-inner">
 	     <div class="container">
-	       <a class="brand" href="/">Morgan Brown</a>
+	       <a class="brand" href="/"></a>
+			<div class="nav-collapse">	
+				<ul class="nav pull-right">
+					<li><a>Witchifier</a></li>
+				</ul>
+			</div>
 	     </div>
 	   </div>
 	 </div>
 	<div class="container">
 		<header class="jumbotron subhead">
-			<div style="float: left;">
+			<div class="hex-collection">
 				<div class="hex-row">
 					<div class="hex">
 						<div class="left"></div>

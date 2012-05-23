@@ -1,9 +1,18 @@
 /* http://jtauber.github.com/articles/css-hexagon.html */
+.hex-collection{
+	float: left;
+}
+
+.hex-row {
+    clear: left;
+}
+
 .hex {
     float: left;
     margin-right: -23px;
     margin-bottom: -47px;
 }
+
 .hex .left {
     float: left;
     width: 0;
@@ -11,12 +20,14 @@
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 }
+
 .hex .middle {
     float: left;
     width: 60px;
     height: 104px;
     background: #8F7FD4;
 }
+
 .hex .right {
     float: left;
     width: 0;
@@ -24,9 +35,7 @@
     border-top: 52px solid transparent;
     border-bottom: 52px solid transparent;
 }
-.hex-row {
-    clear: left;
-}
+
 .hex.even {
     margin-top: 56px;
 }
