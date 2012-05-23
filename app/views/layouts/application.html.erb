@@ -18,7 +18,7 @@
 					<li><a href="http://soundcloud.com/discom4rt">SoundCloud</a></li>
 				</ul>
 				<ul class="nav pull-right">
-					<li><a>Witchifier</a></li>
+					<!-- <li><a>Witchifier</a></li> -->
 				</ul>
 			</div>
 	     </div>
@@ -47,8 +47,9 @@
 					</div>
 				</div>
 			</div>
-			<%= yield %>
+			<%= yield :page_title %>
 		</header>
+		<%= yield %>
 	</div>
 <%= javascript_include_tag "application" %>
 </body>
