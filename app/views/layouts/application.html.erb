@@ -47,10 +47,11 @@
 					</div>
 				</div>
 			</div>
-			<%= yield :page_title %>
+			<%= yield :header_title %>
 		</header>
 		<%= yield %>
 	</div>
 <%= javascript_include_tag "application" %>
+<%= google_analytics_tag %>
 </body>
 </html>
