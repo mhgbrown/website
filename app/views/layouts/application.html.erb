@@ -10,7 +10,7 @@
 	   <div class="navbar-inner">
 	     <div class="container">
 	       <a class="brand" href="/">Morgan Brown</a>
-			<div class="nav-collapse">	
+			<div class="nav-collapse">
 				<ul class="nav">
 					<li><a href="https://docs.google.com/document/pub?id=1P9Su7E94cIwtnJaw9zij5i9_L_A_mv9KagAHVx-m7WA">Resume</a></li>
 					<li><a href="http://www.linkedin.com/in/morg4n">LinkedIn</a></li>
@@ -18,7 +18,7 @@
 					<li><a href="http://soundcloud.com/discom4rt/favorites">SoundCloud</a></li>
 				</ul>
 				<ul class="nav pull-right">
-					<!-- <li><a>Witchifier</a></li> -->
+					<li><%= link_to "Witchifier", witchifier_path %></li>
 				</ul>
 			</div>
 	     </div>
@@ -53,5 +53,6 @@
 	</div>
 <%= javascript_include_tag "application" %>
 <%= google_analytics_tag %>
+<%= yield :javascript %>
 </body>
 </html>
