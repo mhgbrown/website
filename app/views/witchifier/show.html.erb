@@ -8,13 +8,23 @@
 		representation.
 		</p>
 	</div>
+
 </div>
 <div class="row">
 	<div class="span4 offset2-3">
 		<textarea placeholder="Type to witchify..." id="witchifier-input"></textarea>
+		<p class="help-block">Note: I don't want to deal with all text input possibilities, so I have restricted them.</p>
 	</div>
 	<div class="span4">
 		<div id="witchifier-output" class="well">
 		</div>
 	</div>
+
 </div>
+<%= content_for :javascript do %>
+<script type="text/javascript">
+$(function(){
+	$("#witchifier-input").witchifier({target: "#witchifier-output"});
+});
+</script>
+<% end %>
