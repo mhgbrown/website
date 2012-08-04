@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.hinderinput
 //= require_tree .
-$(function(){
+
+$(function() {
 	$('input, textarea').placeholder();
-	$("#witchifier-input").witchifier({target: "#witchifier-output"}).focus();
+	$("#witchifier-input").witchifier({output: "#witchifier-output"}).focus();
 	$('.dropdown-toggle').dropdown();
 });
