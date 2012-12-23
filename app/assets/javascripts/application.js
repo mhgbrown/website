@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(function() {
-	$('input, textarea').placeholder();
-	$("#witchifier-input").witchifier({output: "#witchifier-output"}).focus();
-	$('.dropdown-toggle').dropdown();
+  $('input, textarea').placeholder();
+  $("#witchifier-input").witchifier({output: "#witchifier-output"}).focus();
+  $('.dropdown-toggle').dropdown();
 });
