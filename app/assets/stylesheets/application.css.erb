@@ -12,33 +12,37 @@
  *= require_self
 */
 
-textarea{
+textarea {
 	resize: none;
+}
+
+hr {
+	width: 620px;
+	margin-left: 20px;
+	float: left;
+}
+
+.jumbotron h1 {
+	display: inline-block;
 }
 
 .span12, .container {
   width: 620px !important;
 }
 
-.jumbotron h1{
-	display: inline-block;
-}
-
-.navbar-inner.heading{
+.navbar-inner.heading {
 	background-image: url("<%= asset_path('bg.png') %>");
 	background-repeat: repeat;
 }
 
-.offset2-3{
+.offset2-3 {
 	margin-left: 230px;
 }
 
-pre.bare {
+.bare {
 	background: none;
 	border: none;
-	padding: 20px 0 0 0;
 	border-radius: 0;
-	border-top: 1px dashed #CCC;
 }
 
 .bare .attribution {
