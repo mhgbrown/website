@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="preview">
 	<div class="navbar navbar-fixed-top">
 	   <div class="navbar-inner">
 	     <div class="container">
@@ -20,7 +20,7 @@
 				<ul class="nav pull-right">
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							Experiments
+							Other
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
@@ -33,7 +33,7 @@
 	   </div>
 	 </div>
 	<div class="container">
-		<header class="jumbotron">
+		<header class="jumbotron subhead">
 			<%= yield :header_title %>
 		</header>
 		<%= yield %>
