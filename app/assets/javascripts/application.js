@@ -17,6 +17,6 @@
 
 $(function() {
   $('input, textarea').placeholder();
-  $("#witchifier-input").witchifier({output: "#witchifier-output"}).focus();
   $('.dropdown-toggle').dropdown();
+  $('#witchifier-input').witchify().focus();
 });

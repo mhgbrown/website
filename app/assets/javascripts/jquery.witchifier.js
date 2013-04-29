@@ -1,71 +1,49 @@
-/**
- * A method to translate characters into another representation and then write them to
- * another element.  In the case, the other representation happens to be witch house-y.  Relies
- * on hinderinputjs-rails.
- **/
-(function ( $ ) {
+ // instead of doing this translation business
+ // make witchifier work for one element
+ // $(selector).witchify();
+ // this will translate everything you type into that element into this glitchy
+ // craziness
+ // if I want to create a bookmarklet, just have the bookmarklet search for
+ // things that can accept keyboard input
+ // have the option to always randomix the characters or cache the ones that you use
+ //   default to randomize
+ // be sure to handle cases of copy and paste
+(function( $ ) {
 
   /**
-   * Enable withifier translations from input given to the selected element.
-   *
-   * @param {object} options The configuration that should be used when witchifying.
-   *  output: The element(s) that will have translations written to it/them.
-   *  dictionary: A cache of generated translations.
+   * Witchifier manages the transformation of normal characters to
+   * "witchified" ones.
    **/
-  var witchifier = $.fn.witchifier = function( options ) {
-    var options = $.extend( {}, witchifier.defaults, options ),
-      translation,
-      tindex;
-
-    options.output = $(options.output);
-
-    // Prepare the dictionary for this witchifying session
-    translation = witchifier.translate( '(', options );
-    tindex = witchifier.DICTIONARY[ '(' ].indexOf( translation );
-    options.dictionary[ ')' ] = witchifier.DICTIONARY[ ')' ][ tindex ];
-
-    return this.each(function( index, element ) {
-      $(this).hinderInput({
-        onAdd: function( value ) {
-          var translation = witchifier.translate.call( witchifier, value, options );
-          options.output.text( options.output.text() + translation );
-        },
-        onDelete: function() {
-          witchifier.erase.call( witchifier, options );
-        }
-      });
-    });
-  };
+  var Witchifier = {};
 
   /**
-   * Erase the last character from the output field.
-   *
-   * @param {options} object The current options for witchifier.
+   * The default options for $.fn.witchify.
    **/
-  witchifier.erase = function( options ) {
-    var $target = options.output,
-      text = $target.text();
+  Witchifier.defaults = {
 
-    if ( text.length ) {
-      $target.text( text.substring(0, text.length - 1) );
-    }
+    /* Randomize the translated characters */
+    randomize: true,
+
+    /* Use a custom dictionary for this witchifier session */
+    dictionary: {}
+
   };
 
   /**
    * Translate the given value, retriveing it's translation from
    * the dictionary cache or randomly generating a new one if
-   * there is a miss.
+   * there is a miss or randomization is enabled.
    *
    * @param {string} value A character to be translated.
    * @param {options} object The current options for witchifier.
    **/
-  witchifier.translate = function( value, options ) {
-    var $target = options.output,
+  Witchifier.translate = function( value, options ) {
+    var shouldNotRandomize = !options.randomize,
       targetTranslations,
       randomIndex,
       translation;
 
-    if( options.dictionary[value] ) {
+    if( options.dictionary[ value ] && shouldNotRandomize ) {
       return options.dictionary[ value ];
     }
 
@@ -76,28 +54,33 @@
 
     randomIndex = Math.floor( Math.random() * targetTranslations.length );
     translation = targetTranslations[ randomIndex ];
-    options.dictionary[ value ] = translation;
+    shouldNotRandomize && (options.dictionary[ value ] = translation);
 
     return translation;
   };
 
   /**
-   * The default options for witchifier. "output" is
-   * where the translated characters are written and can be anything
-   * that is jQuery selectable. "dictionary" is used to cache
-   * generated translations.  It can be used to override automatically
-   * generated translations.
+   * Translate a user's keypress into a witchified character.
+   *
+   * @param {jQuery.Event} event The event that triggered the keypress
    **/
-  witchifier.defaults = {
-    output: null,
-    dictionary: {}
+  Witchifier.onkeypress  = function( event ) {
+    var $target = $(event.target),
+      key = String.fromCharCode( event.which ),
+      translation,
+      translatedEvent;
+
+      if( event.originalEvent ) {
+        event.preventDefault();
+        $target.sendkeys( this.translate( key, event.data ) );
+      }
   };
 
   /**
    * The master dictionary from which to derive translations.
    **/
-  witchifier.DICTIONARY = {
-      'A' : ['Ⓐ', 'A', 'Ạ', 'Å', 'Ä', 'Ả', 'Ḁ', 'Ấ', 'Ầ', 'Ẩ', 'Ȃ', 'Ẫ', 'Ậ', 'Ắ', 'Ằ', 'Ẳ', 'Ẵ', 'Ặ', 'Ā', 'Ą', 'Ȁ', 'Ǻ', 'Ȧ', 'Á', 'Ǟ', 'Ǎ', 'À', 'Ã', 'Ǡ', 'Â', 'Ⱥ', 'Æ', 'Ǣ', 'Ǽ', 'Ɐ', 'Ꜳ', 'Ꜹ', 'Ꜻ', 'Ɑ', '⅍'],
+  Witchifier.DICTIONARY = {
+      'A' : ['Ⓐ', 'A', 'Ạ', 'Å', 'Ä', 'Ả', 'Ḁ', 'Ấ', 'Ầ', 'Ẩ', 'Ȃ', 'Ẫ', 'Ậ', 'Ắ', 'Ằ', 'Ẳ', 'Ẵ', 'Ặ', 'Ā', 'Ą', 'Ȁ', 'Ǻ', 'Ȧ', 'Á', 'Ǟ', 'Ǎ', 'À', 'Ã', 'Ǡ', 'Â', 'Ⱥ', 'Æ', 'Ǣ', 'Ǽ', 'Ɐ', 'Ꜳ', 'Ꜹ', 'Ꜻ', 'Ɑ', '⅍', '⟁'],
       'a' : ['ⓐ', '⒜', 'ɐ', 'a', 'ɒ', 'ạ', 'å', 'ä', 'ả', 'ḁ', 'ấ', 'ầ', 'ẩ', 'ȃ', 'ẫ', 'ậ', 'ắ', 'ằ', 'ẳ', 'ẵ', 'ặ', 'ā', 'ą', 'ȁ', 'ǻ', 'ȧ', 'á', 'ǟ', 'ǎ', 'à', 'ã', 'ǡ', 'â', 'ⱥ', 'æ', 'ǣ', 'ǽ', 'ꜳ', 'ꜹ', 'ꜻ', '℀', '℁', 'ª'],
       'B' : ['Ⓑ', 'B', 'Ḃ', 'Ḅ', 'Ḇ', 'Ɓ', 'Ƀ', 'Ƃ', 'Ƅ', 'ℬ'],
       'b' : ['ⓑ', '⒝', 'b', 'ḃ', 'ḅ', 'ḇ', 'ƀ', 'ƃ', 'ƅ'],
@@ -111,7 +94,7 @@
       'f' : ['ⓕ', '⒡', 'f', 'ḟ', 'ƒ', 'ꜰ', 'ⅎ', 'ᵮ', '∱'],
       'G' : ['Ⓖ', 'G', 'Ɠ', 'Ḡ', 'Ĝ', 'Ğ', 'Ġ', 'Ǥ', 'Ǧ', 'Ǵ', '⅁', 'Ģ'],
       'g' : ['ⓖ', '⒢', 'g', 'ḡ', 'ĝ', 'ğ', 'ġ', 'ǥ', 'ǧ', 'ℊ', 'ǵ', 'ģ'],
-      'H' : ['Ⓗ', 'ⓗ', 'H', 'Ḣ', 'Ḥ', 'Ḧ', 'Ḩ', 'Ḫ', 'Ĥ', 'Ȟ', 'Ħ', 'Ⱨ', 'Ꜧ', 'ℍ', 'Ƕ', 'ℋ', 'ℌ'],
+      'H' : ['Ⓗ', 'ⓗ', 'H', 'Ḣ', 'Ḥ', 'Ḧ', 'Ḩ', 'Ḫ', 'Ĥ', 'Ȟ', 'Ħ', 'Ⱨ', 'Ꜧ', 'ℍ', 'Ƕ', 'ℋ', 'ℌ', 'ᾟ'],
       'h' : ['ⓗ', '⒣', 'h', 'ḣ', 'ḥ', 'ḧ', 'ḩ', 'ḫ', 'ĥ', 'ȟ', 'ħ', 'ⱨ', 'ẖ', 'ℏ', 'ℎ', 'ꜧ', 'ᖾ'],
       'I' : ['Ⓘ', 'I', 'Ḭ', 'Ḯ', 'Ĳ', 'Í', 'Ì', 'Î', 'Ï', 'Ĩ', 'Ī', 'Ĭ', 'Į', 'Ǐ', 'ƚ', 'Ỻ', 'ⅉ', 'ℑ', 'ℐ'],
       'i' : ['ⓘ', '⒤', 'i', 'ḭ', 'ḯ', 'ĳ', 'í', 'ì', 'î', 'ï', 'ĩ', 'ī', 'ĭ', 'į', 'ǐ', 'ı', 'ⅈ', 'ℹ'],
@@ -136,7 +119,7 @@
       'S' : ['Ⓢ', 'S', 'Ṡ', 'Ṣ', 'Ṥ', 'Ṧ', 'Ṩ', 'Ś', 'Ŝ', 'Ş', 'Š', 'Ș', 'ȿ', 'Ƨ', 'Ϩ', 'ϩ', 'ẞ', 'ẛ', 'ẝ', '℠'],
       's' : ['ⓢ', '⒮', 's', 'ṡ', 'ṣ', 'ṥ', 'ṧ', 'ṩ', 'ś', 'ŝ', 'ş', 'š', 'ș', 'ꜱ', 'ƨ', 'ß', 'ẜ'],
       'T' : ['Ⓣ', 'T', 'Ṫ', 'Ṭ', 'Ṯ', 'Ṱ', 'Ţ', 'Ť', 'Ŧ', 'Ț', 'Ⱦ', 'Ƭ', 'Ʈ', '℡', '™'],
-      't' : ['ⓣ', '⒯', 't', 'ṫ', 'ṭ', 'ṯ', 'ṱ', 'ţ', 'ť', 'ŧ', 'ț', 'ⱦ', 'ƫ', 'ƭ', 'ẗ', 'ȶ', 'ᚋ', '†', '✝', '✞', '┼', '†'],
+      't' : ['ⓣ', '⒯', 't', 'ṫ', 'ṭ', 'ṯ', 'ṱ', 'ţ', 'ť', 'ŧ', 'ț', 'ⱦ', 'ƫ', 'ƭ', 'ẗ', 'ȶ', 'ᚋ', '†', '✝', '✞', '┼', '†', '✟'],
       'U' : ['Ⓤ', 'U', 'Ṳ', 'Ṵ', 'Ṷ', 'Ṹ', 'Ṻ', 'Ủ', 'Ụ', 'Ứ', 'Ừ', 'Ử', 'Ữ', 'Ự', 'Ũ', 'Ū', 'Ŭ', 'Ů', 'Ű', 'Ǚ', 'Ǘ', 'Ǜ', 'Ų', 'Ǔ', 'Ȕ', 'Û', 'Ȗ', 'Ù', 'Ú', 'Ü', 'Ư', 'Ʉ', 'Ʊ'],
       'u' : ['ⓤ', '⒰', 'u', 'ṳ', 'ṵ', 'ṷ', 'ṹ', 'ṻ', 'ủ', 'ụ', 'ứ', 'ừ', 'ử', 'ữ', 'ự', 'ũ', 'ū', 'ŭ', 'ů', 'ű', 'ǚ', 'ǘ', 'ǜ', 'ų', 'ǔ', 'ȕ', 'û', 'ȗ', 'ù', 'ú', 'ü', 'ư', 'Ʋ'],
       'V' : ['Ⓥ', 'V', 'Ṽ', 'Ṿ', 'Ʌ', '℣', 'ⱱ', 'ⱽ'],
@@ -161,8 +144,18 @@
       '_' : ['‿'],
       '*' : ['⊛', '◦', 'ᚕ', '✣', '✤', '✥', '✩', '✱', 'ᢆ', '⁎', '⁕', '⁙', '※'],
       '/' : ['⋰'],
-      '\\':  ['⋱'],
-      'misc' : [ 'ᾟ', '░', '▒', '▢', '▲', '△', '▶', '▷', '▼', '▽', '◀', '◁', '➔', '➜', '⟁', '✞', '✝', '✟', '‡', '͎']
-    }
+      '\\':  ['⋱']
+    };
+
+  /**
+   * Translates keyboard input into
+   **/
+  $.fn.witchify = function( options ) {
+    var options = $.extend( {}, Witchifier.defaults, options );
+
+    return this.each( function( index, element ) {
+      $(this).on( 'keypress', options, $.proxy( Witchifier.onkeypress, Witchifier ) );
+    });
+  };
 
 })( jQuery );
