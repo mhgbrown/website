@@ -2,42 +2,12 @@
 <html>
 <head>
   <title>Morgan Brown</title>
+  <link href='http://fonts.googleapis.com/css?family=Muli|Ultra' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="preview">
-	<div class="navbar navbar-fixed-top">
-	   <div class="navbar-inner">
-	     <div class="container">
-	       <a class="brand" href="/">Morgan Brown</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-					<li><a rel="prerender" target="_blank" href="http://github.com/discom4rt">GitHub</a></li>
-					<li><a target="_blank" href="http://www.linkedin.com/in/morg4n">LinkedIn</a></li>
-					<li><a target="_blank" href="https://docs.google.com/document/pub?id=1P9Su7E94cIwtnJaw9zij5i9_L_A_mv9KagAHVx-m7WA">Resume</a></li>
-					<li><a target="_blank" href="http://soundcloud.com/discom4rt/likes">SoundCloud</a></li>
-				</ul>
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							Other
-							<b class="caret"></b>
-						</a>
-						<ul class="dropdown-menu">
-							<li><%= link_to "Witchifier", witchifier_path %></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-	     </div>
-	   </div>
-	 </div>
-	<div class="container">
-		<header class="jumbotron subhead">
-			<%= yield :header_title %>
-		</header>
-		<%= yield %>
-	</div>
+<body>
+<%= yield %>
 <%= javascript_include_tag "application" %>
 <%= google_analytics_tag %>
 </body>

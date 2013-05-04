@@ -12,43 +12,70 @@
  *= require_self
 */
 
-textarea {
-	resize: none;
+body {
+	font-family: 'Muli', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	padding: 50px;
 }
 
-hr {
-	width: 620px;
-	margin-left: 20px;
-	float: left;
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }
 
-.jumbotron h1 {
+a {
+	text-decoration: none;
+	color: black;
+	transition: color 1s;
+	outline: 0;
+}
+
+a:visited {
+	color: black;
+}
+
+a:hover {
+	color: rgb(253, 120, 8);
+}
+
+h1, h2 {
+	padding: 0;
+	margin: 0;
+}
+
+.title {
+	font-size: 120px;
+	font-family: 'Ultra', serif;
+}
+
+.sub-title {
+	font-size: 60px;
+	font-family: 'Ultra', serif;
+}
+
+.navigation,
+.extras {
+	font-size: 60px;
+	padding: 20px 0 20px 0;
+}
+
+.navigation {
+	padding-top: 60px;
+}
+
+.extras {
+	border-top: 5px black solid;
 	display: inline-block;
-	font-weight: bold;
-	font-size: 81px;
-	line-height: 1;
 }
 
-.span12, .container {
-  width: 620px !important;
-}
-
-.navbar-inner.heading {
-	background-image: url("<%= asset_path('bg.png') %>");
-	background-repeat: repeat;
-}
-
-.offset2-3 {
-	margin-left: 230px;
-}
-
-.bare {
-	background: none;
+#witchifier-input {
 	border: none;
-	border-radius: 0;
-}
-
-.bare .attribution {
-	font-style: italic;
+	resize: none;
+	width: 100%;
+	padding: 0;
+	font-size: 120px;
+	outline: 0;
+	min-height: 300px;
 }
 
