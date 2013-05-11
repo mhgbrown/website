@@ -1,13 +1,4 @@
- // instead of doing this translation business
- // make witchifier work for one element
- // $(selector).witchify();
- // this will translate everything you type into that element into this glitchy
- // craziness
- // if I want to create a bookmarklet, just have the bookmarklet search for
- // things that can accept keyboard input
- // have the option to always randomix the characters or cache the ones that you use
- //   default to randomize
- // be sure to handle cases of copy and paste
+// TODO: Bookmarklet
 (function( $ ) {
 
   /**
@@ -74,6 +65,35 @@
         event.preventDefault();
         $target.sendkeys( this.translate( key, event.data ) );
       }
+  };
+
+  /**
+   * Translate and insert any pasted text.
+   *
+   * @param {jQuery.Event} event The event that triggered the paste
+   **/
+  Witchifier.onpaste  = function( event ) {
+    var $target = $(event.target),
+      pastedText = '',
+      i = 0,
+      translatedText = '';
+
+    // IE
+    if ( window.clipboardData && window.clipboardData.getData ) {
+      pastedText = window.clipboardData.getData( 'Text' );
+    // legitimate browsers
+    } else if ( event.originalEvent.clipboardData && event.originalEvent.clipboardData.getData ) {
+      pastedText = event.originalEvent.clipboardData.getData( 'text/plain' );
+    }
+
+    i = pastedText.length;
+
+    while( i-- ) {
+      translatedText = this.translate( pastedText.charAt( i ), event.data ) + translatedText;
+    }
+
+    $target.sendkeys( translatedText );
+    event.preventDefault();
   };
 
   /**
@@ -148,14 +168,17 @@
     };
 
   /**
-   * Translates keyboard input into
+   * Translates whatever you type into glitchy letters.
+   *
+   * @param {Object} options Configure the witchifier
    **/
   $.fn.witchify = function( options ) {
     var options = $.extend( {}, Witchifier.defaults, options );
 
     return this.each( function( index, element ) {
       $(this).on( 'keypress', options, $.proxy( Witchifier.onkeypress, Witchifier ) );
+      $(this).on( 'paste', options, $.proxy( Witchifier.onpaste, Witchifier ) );
     });
   };
 
-})( jQuery );
+}( jQuery ));
