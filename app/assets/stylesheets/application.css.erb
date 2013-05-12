@@ -15,7 +15,8 @@
 body {
 	font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:600; font-stretch:normal;
 	-webkit-font-smoothing: antialiased;
-	padding: 40px;
+	text-rendering: optimizeLegibility;
+	padding: 20px 40px 40px 40px;
 	letter-spacing: -1px;
 	font-weight: bold;
 }
@@ -54,8 +55,7 @@ h1, h2 {
 	font-size: 60px;
 }
 
-.navigation,
-.extras {
+.navigation {
 	font-size: 120px;
 	padding: 20px 0 20px 0;
 }
@@ -65,16 +65,44 @@ h1, h2 {
 	padding-bottom: 24px;
 }
 
-.extras {
+.navigation .extra {
+	margin-top: 22px;
+	padding-top: 20px;
 	border-top: 16px black solid;
 	display: inline-block;
+}
+
+.inline.navigation {
+	font-size: 14px;
+	padding: 0;
+}
+
+.inline.navigation li {
+	padding-right: 20px;
+	display: inline-block;
+}
+
+.inline.navigation .first {
+	padding-left: 0;
+}
+
+.inline.navigation .extra {
+	border-left: 2px solid black;
+	padding-left: 20px;
+	margin-top: 0;
+	padding-top: 0;
+	border-top: none;
+}
+
+.inline.navigation .active a {
+	color: rgb(253, 120, 8);
 }
 
 #witchifier-input {
 	border: none;
 	resize: none;
 	width: 100%;
-	padding: 0;
+	padding: 10px 0 0 0;
 	font-size: 120px;
 	outline: 0;
 	min-height: 300px;

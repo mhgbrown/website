@@ -17,5 +17,15 @@
 
 $(function() {
   $('input, textarea').placeholder();
-  $('#witchifier-input').witchify().autosize().focus();
+  $('#witchifier-input').witchify().autosize({
+  	// keep scroll area up to date with
+  	// witchification
+  	callback: function() {
+  		$('html, body').scrollTop( $(document).height() );
+  	}
+  }).on( 'paste', function( event ) {
+  	// make sure that we get a resize
+  	// when we paste stuff in
+  	$(this).trigger( 'autosize' );
+  }).focus();
 });
