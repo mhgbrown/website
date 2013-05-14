@@ -13,7 +13,6 @@
 //= require_tree .
 
 $(function() {
-  $('input, textarea').placeholder();
   $('#witchifier-input').witchify().autosize({
   	// keep scroll area up to date with
   	// witchification
@@ -25,4 +24,5 @@ $(function() {
   	// when we paste stuff in
   	$(this).trigger( 'autosize' );
   }).focus();
+
 });
