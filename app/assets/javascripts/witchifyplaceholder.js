@@ -10,7 +10,7 @@ $(function() {
   }
 
   function afterWitchified() {
-    
+
     if( !stopped ) {
       setTimeout( witchifyPlaceholder, TIMEOUT );
     }
@@ -21,7 +21,8 @@ $(function() {
     $witchifierInput.fakeType(placeholder, {
       beforeEach: witchifyCharacter,
       done: afterWitchified,
-      attribute: 'placeholder'
+      attribute: 'placeholder',
+      timeout: 200
     });
   }
 

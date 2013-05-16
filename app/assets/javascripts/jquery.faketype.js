@@ -1,5 +1,12 @@
 (function( $ ) {
 
+  /**
+   * FakeTyper imitates the look of a actual typing.
+   *
+   * @param {jQuery} $elements A jQuery collection of objects
+   * @param {Array} strArray An array of characters
+   * @param {Object} Configurable parameters
+   **/
   var FakeTyper = function( $elements, strArray, options ) {
     this.$elements = $elements;
     this.strArray = strArray;
@@ -8,6 +15,9 @@
     this.timer = null;
   };
 
+  /**
+   * Begin fake typing
+   **/
   FakeTyper.prototype.execute = function() {
     if( !this.strArray.length ) {
 
@@ -24,6 +34,10 @@
     this.timer = setTimeout( $.proxy( this.execute, this ), this.options.timeout );
   };
 
+  /**
+   * Write the next character in the strArray to the target
+   * elements.
+   **/
   FakeTyper.prototype.writeNext = function() {
     var nextChar = this.strArray.shift(),
       prevStr = this.$elements.attr( this.options.attribute ) || '';
@@ -35,6 +49,9 @@
     this.$elements.attr( this.options.attribute, prevStr + nextChar );
   };
 
+  /**
+   * Write out the remaning charcters in strArray and halt fake typing.
+   **/
   FakeTyper.prototype.finish = function() {
     this.stop();
 
@@ -47,23 +64,35 @@
     }
   };
 
+  /**
+   * Halt/pause fake typing
+   **/
   FakeTyper.prototype.stop = function() {
     clearTimeout( this.timer );
     this.timer = null;
   };
 
-  FakeTyper.prototype.start = function() {
-    this.execute();
-  };
+  /**
+   * Start/resume fake typing
+   **/
+  FakeTyper.prototype.start = FakeTyper.prototype.execute;
 
+  /**
+   * Default configuration options for fake typing
+   **/
   FakeTyper.defaults = {
 
+    /* the number of milliseconds between each fake keystroke */
     timeout: 300,
 
+    /* the attribute in which to write */
     attribute: 'text',
 
+    /* a callback that is executed before each character is processed
+      and whose return value determines what is ultimately written */
     beforeEach: false,
 
+    /* a callback that is executed when fake typing has completed */
     done: false
 
   };
