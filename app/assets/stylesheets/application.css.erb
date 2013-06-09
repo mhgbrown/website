@@ -12,8 +12,15 @@
  *= require_self
 */
 
+html, body {
+	background-color: #EEEEEE;
+	color: #111111;
+}
+
 body {
-	font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:600; font-stretch:normal;
+	font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+	font-weight:600;
+	font-stretch:normal;
 	padding: 20px 40px 40px 40px;
 	letter-spacing: -1px;
 	font-weight: bold;
@@ -27,13 +34,13 @@ ul {
 
 a {
 	text-decoration: none;
-	color: black;
+	color: #111111;
 	transition: color 1s;
 	outline: 0;
 }
 
 a:visited {
-	color: black;
+	color: #111111;
 }
 
 a:hover {
@@ -103,5 +110,7 @@ h1, h2 {
 	outline: 0;
 	min-height: 300px;
 	line-height: 150px;
+	background-color: inherit;
+	color: #111111;
 }
 
