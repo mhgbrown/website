@@ -16,4 +16,27 @@ module ApplicationHelper
     </script>}.html_safe
   end
 
+  def navigation(inline=false)
+    nav = <<-HTML
+        <li><a rel="prerender" target="_blank" href="http://github.com/discom4rt">Code</a></li>
+        <li><a target="_blank" href="http://www.linkedin.com/in/morg4n">Resume</a></li>
+        <li>#{link_to "Projects", projects_path}</li>
+        <li><a target="_blank" href="http://soundcloud.com/discom4rt/favorites">Music</a></li>
+      </ul>
+    HTML
+
+    if inline
+      nav = %{
+        <ul class="navigation inline">
+          <li><a href="/">Morgan Brown</a></li>
+      } + nav
+    else
+      nav = %{
+        <ul class="navigation">
+      } + nav
+    end
+
+    nav.html_safe
+  end
+
 end
