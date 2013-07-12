@@ -17,7 +17,7 @@ $(function() {
   	// keep scroll area up to date with
   	// witchification
   	callback: function() {
-      $('html, body').scrollTop( $(this).prop( 'scrollHeight' ) );
+      $('html, body').scrollTop( $(this).height() );
   	}
   }).on( 'paste', function( event ) {
   	// make sure that we get a resize
