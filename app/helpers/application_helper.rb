@@ -23,6 +23,7 @@ module ApplicationHelper
         <li><a href="http://blog.morgan.io">Blog</a></li>
         <li #{request.fullpath.include?("projects") ? "class=\"active\"" : ""}>#{link_to "Projects", projects_path}</li>
         <li><a target="_blank" href="http://soundcloud.com/discom4rt/favorites">Music</a></li>
+        <li><a target="_blank" href="http://instagram.com/discom4rt">Photos</a></li>
       </ul>
     HTML
 
