@@ -60,12 +60,23 @@ h1, h2 {
 	color: white;
 }
 
-.title {
-	font-size: 120px;
-	line-height: 1em;
+#title, #sub-title {
+	position: absolute;
 }
 
-.sub-title {
+#title {
+	font-size: 120px;
+	line-height: 1em;
+	-webkit-transform:rotate(-90deg);
+  -moz-transform:rotate(-90deg);
+  -ms-transform:rotate(-90deg);
+  -o-transform:rotate(-90deg);
+  transform:rotate(-90deg);
+	top: 255px;
+	left: -330px;
+}
+
+#sub-title {
 	font-size: 60px;
 	padding-bottom: 60px;
 }
@@ -73,6 +84,7 @@ h1, h2 {
 .navigation {
 	font-size: 120px;
 	padding: 0 0 24px 0;
+	margin-left: 140px;
 }
 
 .navigation li {
@@ -90,6 +102,7 @@ h1, h2 {
 	font-size: 14px;
 	padding-bottom: 20px;
 	letter-spacing: normal;
+	margin-left: 0;
 }
 
 .inline.navigation li {

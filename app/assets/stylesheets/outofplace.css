@@ -1,0 +1,29 @@
+.out-of-place {
+  display: inline-block;
+  position: relative;
+}
+
+.one {
+  color: magenta;
+  top: 500px;
+}
+
+.two {
+  color: blue;
+  top: 65px;
+}
+
+.three {
+  color: yellow;
+  top: 205px;
+}
+
+.four {
+  top: 430px;
+  color: cyan;
+}
+
+.five {
+  color: lime;
+  top: 130px;
+}
