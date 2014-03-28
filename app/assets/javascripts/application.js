@@ -11,18 +11,3 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require_tree .
-
-$(function() {
-  $('#witchifier-input').witchify().autosize({
-  	// keep scroll area up to date with
-  	// witchification
-  	callback: function() {
-      $('html, body').scrollTop( $(this).height() );
-  	}
-  }).on( 'paste', function( event ) {
-  	// make sure that we get a resize
-  	// when we paste stuff in
-  	$(this).trigger( 'autosize' );
-  }).focus();
-
-});
