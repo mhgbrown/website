@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def google_analytics_tag
-    return unless Rails.env == "production"
+    return if Rails.env == "development"
 
     %{<script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
