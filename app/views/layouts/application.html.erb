@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Morgan Brown</title>
   <%= stylesheet_link_tag "application", :media => :all %>
   <%= favicon_link_tag "favicon.png", :type => "image/png" %>
@@ -8,7 +9,7 @@
 </head>
 <body>
 <%= yield %>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <%= javascript_include_tag "application" %>
 <%= yield :extra_js %>
 <%= google_analytics_tag %>

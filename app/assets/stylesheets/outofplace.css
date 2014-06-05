@@ -1,30 +1,6 @@
 .out-of-place {
   display: inline-block;
   position: relative;
-  -webkit-transform: rotate(45deg);
-}
-
-.one {
-  color: magenta;
-  top: 500px;
-}
-
-.two {
+  top: -100px;
   color: blue;
-  top: 165px;
-}
-
-.three {
-  color: yellow;
-  top: 205px;
-}
-
-.four {
-  top: 430px;
-  color: cyan;
-}
-
-.five {
-  color: lime;
-  top: 130px;
 }
