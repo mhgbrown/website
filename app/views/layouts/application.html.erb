@@ -5,15 +5,17 @@
   <meta name="description" content="Morgan Brown is a software engineer. This is his website.">
   <meta name="keywords" content="morgan brown,software,software engineering,web,art">
   <meta name="author" content="Morgan Brown">
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application", :media => :all %>
   <%= favicon_link_tag "favicon.png", :type => "image/png" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= yield %>
+  <div id="content">
+    <%= yield %>
+  </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <%= javascript_include_tag "application" %>
-<%= yield :extra_js %>
 <%= google_analytics_tag %>
 </body>
 </html>
