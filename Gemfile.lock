@@ -32,7 +32,6 @@ GEM
     builder (3.0.4)
     erubis (2.7.0)
     execjs (2.2.1)
-    git (1.2.8)
     hike (1.2.3)
     i18n (0.6.11)
     journey (1.0.4)
@@ -94,7 +93,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  git
   pg
   rails (= 3.2.19)
   sass-rails (~> 3.2.3)
