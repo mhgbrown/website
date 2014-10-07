@@ -1,4 +1,4 @@
 MorganIo::Application.routes.draw do
-  resource :witchifier, :only => :show
   root :to => 'application#index'
+  match "/projects/witchifier" => redirect("http://witchifier.morgan.io")
 end
