@@ -4,21 +4,41 @@
   <title>Morgan Brown</title>
   <meta charset="utf-8">
   <link rel="dns-prefetch" href="//ajax.googleapis.com">
-  <link rel="dns-prefetch" href="//discom4rt.github.io">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Morgan Brown is a software engineer. This is his website.">
   <meta name="keywords" content="morgan brown,software,software engineering,web,art">
   <meta name="author" content="Morgan Brown">
-  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application", :media => :all %>
   <%= favicon_link_tag "favicon.png", :type => "image/png" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="content">
-    <%= yield %>
+  <div class="content-left">
+    <%= yield :left %>
+  </div>
+  <div class="content-right">
+    <%= yield :right %>
   </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.js"></script>
 <%= javascript_include_tag "application" %>
 <%= google_analytics_tag %>
+<!--
+thousands are sailing
+the same self the only self
+
+self willed the peril of a thousand fates
+
+a line of infinite ends finite finishing
+the one remains oblique and pure
+
+arching to the single point of
+consciousness
+
+find yourself
+starting back
+-->
 </body>
 </html>

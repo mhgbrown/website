@@ -1,35 +1,23 @@
-
-<span class="wiggle">〰〰〰</span>
-<h1 id="title">Morgan Brown presents...</h1>
-<ul class="navigation">
-  <li><a target="_blank" href="http://witchifier.morgan.io">Witchifier</a></li>
-  <li><a href="javascript:!function(t,e){function s(){var t=e.createElement('script');t.setAttribute('src','http://discom4rt.github.io/fuck-my-chars/js/fuck-my-chars.js'),t.onload=function(){r=!1,FuckMyChars.up()},e.body.appendChild(t)}var c,r=!1;if(t.FuckMyChars)FuckMyChars.up();else{if(r)return;r=!0,c=e.createElement('link'),c.setAttribute('href','http://discom4rt.github.io/fuck-my-chars/css/fuck-my-chars.css'),c.setAttribute('rel','stylesheet'),c.setAttribute('type','text/css'),c.onload=function(){s()},e.getElementsByTagName('head')[0].appendChild(c)}}(window,document);">Fuck My Chars</a></li>
-  <li><a href="http://blog.morgan.io">Blog</a></li>
-  <li><a target="_blank" href="//tones.morgan.io/">Tones</a></li>
-  <li><a target="_blank" href="http://github.com/discom4rt">Code</a></li>
-  <li><a href="javascript:!function(o,t){var c;o.FuckMyDom?FuckMyDom.slowly():(c=t.createElement('script'),c.setAttribute('src','http://discom4rt.github.io/fuck-my-dom/fuck-my-dom.js'),c.onload=function(){FuckMyDom.slowly()},t.body.appendChild(c))}(window,document);">Fuck My Dom</a></li>
-  <li><a target="_blank" href="http://soundcloudqueue.morgan.io/">SoundCloud Queue</a></li>
-  <li><a target="_blank" href="http://instagram.com/discom4rt">Photos</a></li>
-  <li><a target="_blank" href="//image2html.morgan.io">image2html</a></li>
-  <li><a target="_blank" href="http://soundcloud.com/discom4rt/favorites">Music</a></li>
-  <li><a target="_blank" href="//justagrid.morgan.io/">Just A Grid</a></li>
-  <li><a target="_blank" href="https://twitter.com/dattweettho">DAT TWEET THO</a></li>
-  <li><a target="_blank" href="http://www.linkedin.com/in/morg4n">Resume</a></li>
-  <li><a target="_blank" href="http://void.morgan.io/">Void</a></li>
-</ul>
-
-<!--
-thousands are sailing
-the same self the only self
-
-self willed the peril of a thousand fates
-
-a line of infinite ends finite finishing
-the one remains oblique and pure
-
-arching to the single point of
-consciousness
-
-find yourself
-starting back
--->
+<%= content_for :left do %>
+  <h1 id="title">Morgan Brown</h1>
+  <ul class="navigation left">
+    <li><a target="_blank" href="http://github.com/discom4rt">Code</a></li>
+    <li><a target="_blank" href="http://instagram.com/discom4rt">Photos</a></li>
+    <li><a target="_blank" href="http://soundcloud.com/discom4rt/favorites">Music</a></li>
+    <li><a href="http://blog.morgan.io">Blog</a></li>
+    <li><a target="_blank" href="http://www.linkedin.com/in/morg4n">Resume</a></li>
+  </ul>
+<% end %>
+<%= content_for :right do %>
+  <ul class="navigation right">
+    <li><a target="_blank" href="http://witchifier.morgan.io">Witchifier</a></li>
+    <li><a href="javascript:(function fmc(t,e){function s(){var t=e.createElement('script');t.setAttribute('src','http://discom4rt.github.io/fuck-my-chars/js/fuck-my-chars.js'),t.onload=function(){r=!1,FuckMyChars.up()},e.body.appendChild(t)}var c,r=!1;if(t.FuckMyChars)FuckMyChars.up();else{if(r)return;r=!0,c=e.createElement('link'),c.setAttribute('href','http://discom4rt.github.io/fuck-my-chars/css/fuck-my-chars.css'),c.setAttribute('rel','stylesheet'),c.setAttribute('type','text/css'),c.onload=function(){s()},e.getElementsByTagName('head')[0].appendChild(c)}})(window,document);">Fuck My Chars</a></li>
+    <li><a target="_blank" href="//tones.morgan.io/">Tones</a></li>
+    <li><a href="javascript:(function fmd(o,t){var c;o.FuckMyDom?FuckMyDom.slowly():(c=t.createElement('script'),c.setAttribute('src','http://discom4rt.github.io/fuck-my-dom/fuck-my-dom.js'),c.onload=function(){FuckMyDom.slowly()},t.body.appendChild(c))})(window,document);">Fuck My Dom</a></li>
+    <li><a target="_blank" href="http://soundcloudqueue.morgan.io/">SoundCloud Queue</a></li>
+    <li><a target="_blank" href="//image2html.morgan.io">image2html</a></li>
+    <li><a target="_blank" href="//justagrid.morgan.io/">Just A Grid</a></li>
+    <li><a target="_blank" href="https://twitter.com/dattweettho">DAT TWEET THO</a></li>
+    <li><a target="_blank" href="http://void.morgan.io/">Void</a></li>
+  </ul>
+<% end %>
