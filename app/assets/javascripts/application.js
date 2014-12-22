@@ -26,23 +26,37 @@ $(function() {
       .off('mouseenter mouseleave', '.navigation.right a')
       .on({
         mouseenter: function (event) {
-          var $target = $(event.target);
+          var $target = $(event.target).closest('a'),
+            rotator = new CharacterRotator(this);
+
           $target.css('background-color', $contentLeft.css('background-color'));
+          rotator.rotate();
+          $target.data('rotator', rotator);
         },
         mouseleave: function (event) {
-          var $target = $(event.target);
+          var $target = $(event.target).closest('a'),
+            rotator = $target.data('rotator');
+
           $target.css('background-color', 'inherit');
+          rotator.restore();
         }
       }, '.navigation.right a')
       .off('mouseenter mouseleave', '.navigation.left a')
       .on({
         mouseenter: function (event) {
-          var $target = $(event.target);
+          var $target = $(event.target).closest('a'),
+            rotator = new CharacterRotator(this);
+
           $target.css('color', $contentLeft.css('background-color'));
+          rotator.rotate();
+          $target.data('rotator', rotator);
         },
         mouseleave: function (event) {
-          var $target = $(event.target);
+          var $target = $(event.target).closest('a'),
+            rotator = $target.data('rotator');
+
           $target.css('color', 'inherit');
+          rotator.restore();
         }
       }, '.navigation.left a');
 
