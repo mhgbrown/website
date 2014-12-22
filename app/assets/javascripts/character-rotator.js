@@ -51,7 +51,7 @@
         node.nodeValue.replace(/(.)/g, function( match ) {
           var tmpSpan = document.createElement('span');
           tmpSpan.className = self.CLASS_ROTATED;
-          tmpSpan.setAttribute('style', 'display:inline;');
+          tmpSpan.setAttribute('style', 'display:inline;white-space:pre;');
           tmpSpan.innerHTML = match;
           tmpFrag.appendChild(tmpSpan);
         });
