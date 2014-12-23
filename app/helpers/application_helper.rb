@@ -16,12 +16,12 @@ module ApplicationHelper
 
   def navigation(inline=false)
     nav = <<-HTML
-        <li><a rel="prerender" target="_blank" href="http://github.com/discom4rt">Code</a></li>
+        <li><a rel="prerender" target="_blank" href="http://github.com/mhgbrown">Code</a></li>
         <li><a target="_blank" href="http://www.linkedin.com/in/morg4n">Resume</a></li>
         <li><a href="http://blog.morgan.io">Blog</a></li>
         <li #{request.fullpath.include?("projects") ? "class=\"active\"" : ""}>#{link_to "Projects", projects_path}</li>
-        <li><a target="_blank" href="http://soundcloud.com/discom4rt/favorites">Music</a></li>
-        <li><a target="_blank" href="http://instagram.com/discom4rt">Photos</a></li>
+        <li><a target="_blank" href="http://soundcloud.com/mhgbrown/favorites">Music</a></li>
+        <li><a target="_blank" href="http://instagram.com/mhgbrown">Photos</a></li>
       </ul>
     HTML
 
