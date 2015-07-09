@@ -62,6 +62,6 @@ $(function() {
 
   }
 
-  setInterval(cycleColor, 1000);
+  setInterval(cycleColor, 5000);
 
 });
