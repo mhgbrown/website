@@ -18,7 +18,7 @@ $(function() {
   var MAX_OFFSET = 1000;
 
   function getImage() {
-    var offset = Math.round(Math.random() * MAX_OFFSET);
+    var offset = Math.floor(Math.random() * MAX_OFFSET);
 
     $.getJSON('http://api.tumblr.com/v2/blog/discom4rt.tumblr.com/likes?callback=?', {
       api_key: 'ok1dCktUCXTyOgG0vlyhxcW7oQ4lxUZl0QfZkoEiwwjvU2ZKAv',
@@ -32,8 +32,11 @@ $(function() {
         return getImage();
       }
 
+      var photos = json.response.liked_posts[0].photos;
+      var rpindex = Math.floor(Math.random() * photos.length);
+
       $moodSetter.attr({
-        src: json.response.liked_posts[0].photos[0].original_size.url
+        src: photos[rpindex].original_size.url
       }).on('load', function(event) {
         $moodSetter.addClass('mood-setter');
         $('body').append($moodSetter);
