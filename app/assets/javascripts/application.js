@@ -41,12 +41,12 @@ $(function() {
         $moodSetter.addClass('mood-setter');
         $('body').append($moodSetter);
 
-        var pt = ((Math.random() * ($(document).height() - $moodSetter[0].height))/$(document).height()) * 100;
-        var pl = ((Math.random() * ($(document).width() - $moodSetter[0].width))/$(document).width()) * 100;
+        var pt = (Math.random() * ($(document).height() - $moodSetter[0].height));
+        var pl = (Math.random() * ($(document).width() - $moodSetter[0].width));
 
         $moodSetter.css({
-          top: pt + '%',
-          left: pl + '%',
+          top: pt,
+          left: pl,
           visibility: 'visible'
         });
       });
