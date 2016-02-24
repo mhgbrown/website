@@ -15,54 +15,37 @@
 
 $(function() {
 
-  var $contentLeft = $('.content-left'),
-    $contentRight = $('.content-right');
+  var MAX_OFFSET = 1000;
 
-  function cycleColor() {
-    var color = randomColor({ luminosity: 'bright' });
-    $contentLeft.css('background-color', color);
-    $contentRight.css('color', color);
+  function getImage() {
+    var offset = Math.round(Math.random() * MAX_OFFSET);
 
-    $(document)
-      .off('mouseenter mouseleave', '.navigation.right a')
-      .on({
-        mouseenter: function (event) {
-          var $target = $(event.target).closest('a'),
-            rotator = new CharacterRotator(this);
+    $.getJSON('http://api.tumblr.com/v2/blog/discom4rt.tumblr.com/likes?callback=?', {
+      api_key: 'ok1dCktUCXTyOgG0vlyhxcW7oQ4lxUZl0QfZkoEiwwjvU2ZKAv',
+      offset: offset,
+      limit: 1
+    }).then(function(json) {
+      var $moodSetter = $('<img>');
 
-          $target.css('background-color', $contentLeft.css('background-color'));
-          rotator.rotate();
-          $target.data('rotator', rotator);
-        },
-        mouseleave: function (event) {
-          var $target = $(event.target).closest('a'),
-            rotator = $target.data('rotator');
+      if(!json.response.liked_posts[0].photos || !json.response.liked_posts[0].photos.length) {
+        console.warn('found post with no images!')
+        return getImage();
+      }
 
-          $target.css('background-color', 'inherit');
-          rotator.restore();
-        }
-      }, '.navigation.right a')
-      .off('mouseenter mouseleave', '.navigation.left a')
-      .on({
-        mouseenter: function (event) {
-          var $target = $(event.target).closest('a'),
-            rotator = new CharacterRotator(this);
+      $moodSetter.attr({
+        src: json.response.liked_posts[0].photos[0].original_size.url
+      }).on('load', function(event) {
+        $moodSetter.addClass('mood-setter');
+        $('body').append($moodSetter);
 
-          $target.css('color', $contentLeft.css('background-color'));
-          rotator.rotate();
-          $target.data('rotator', rotator);
-        },
-        mouseleave: function (event) {
-          var $target = $(event.target).closest('a'),
-            rotator = $target.data('rotator');
-
-          $target.css('color', 'inherit');
-          rotator.restore();
-        }
-      }, '.navigation.left a');
-
+        $moodSetter.css({
+          top: Math.random() * ($(document).height() - $moodSetter[0].height),
+          left: Math.random() * ($(document).width() - $moodSetter[0].width),
+          visibility: 'visible'
+        });
+      });
+    });
   }
 
-  setInterval(cycleColor, 5000);
-
+  getImage();
 });

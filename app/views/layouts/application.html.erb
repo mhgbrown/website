@@ -9,20 +9,17 @@
   <meta name="description" content="Morgan Brown is a Berlin-based software engineer interested in art, psychology, and linguistics.">
   <meta name="keywords" content="morgan brown,software,software engineering,web,art">
   <meta name="author" content="Morgan Brown">
-  <script src="//use.typekit.net/qyd3alk.js"></script>
-  <script>try{Typekit.load();}catch(e){}</script>
+  <link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:600' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application", :media => :all %>
   <%= favicon_link_tag "favicon.png", :type => "image/png" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="content-left">
-    <%= yield :left %>
-  </div>
-  <div class="content-right">
-    <%= yield :right %>
-  </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <main role="main">
+      <%= yield :content %>
+  </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.js"></script>
 <%= javascript_include_tag "application" %>
 <%= google_analytics_tag %>

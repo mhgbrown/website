@@ -1,14 +1,29 @@
-(function(window, document, undefined){
+/**
+ $(document)
+  .on('mouseenter touchstart', 'a', function(event) {
+    var $target = $(event.target).closest('a'),
+      rotator = $target.data('rotator') || new CharacterRotator($target[0]);
+    rotator.rotate();
+    $target.data('rotator', rotator);
+  })
+  .on('mouseleave touchend', 'a', function(event) {
+    var $target = $(event.target).closest('a'),
+      rotator = $target.data('rotator');
+    rotator.restore();
+  });
+ */
+(function(window, document, undefined) {
 
   var CharacterRotator = function(rootElement) {
     this.rootElement = rootElement;
   };
 
   CharacterRotator.prototype = {
+    CLASS_DEFAULT: 'cr-straight',
 
-    CLASS_ROTATED: 'rotated',
+    CLASS_ROTATED: 'cr-rotated',
 
-    REGEXP_ROTATED: new RegExp('\\brotated\\b'),
+    REGEXP_ROTATED: new RegExp('\\bcr\-rotated\\b'),
 
     REGEXP_SPACES: /^\s+$/,
 
@@ -17,14 +32,23 @@
      * TODO restore whole tree
      */
     restore: function() {
+      // TODO, keep the elements so you can unrotate them
       var rotations = this.rootElement.querySelectorAll('.' + this.CLASS_ROTATED),
         textContent = [].map.call(rotations, function(elem){ return elem.textContent }).join('');
       this.rootElement.innerHTML = textContent;
     },
 
     /**
+     * [straighten description]
+     * @return {[type]} [description]
+     */
+    straighten: function() {
+
+    },
+
+    /**
      * Rotate *all* the characters within the HTML tree
-     * rooted at the node specified during the construction of 
+     * rooted at the node specified during the construction of
      * this CharacterRotator.
      */
     rotate: function() {
@@ -93,7 +117,7 @@
       css['transform'] = transform;
       css['mozTransform'] = transform;
       css['webkitTransform'] =  transform;
-      
+
       for( prop in css ) {
         element.style[prop] = css[prop];
       }
@@ -118,7 +142,7 @@
         if( !this.REGEXP_SPACES.test( node.nodeValue ) ) {
           textNodes.push(node);
         }
-          
+
         node = walker.nextNode();
       }
 
