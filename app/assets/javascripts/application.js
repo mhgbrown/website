@@ -27,7 +27,7 @@ $(function() {
     }).then(function(json) {
       var $moodSetter = $('<img>');
 
-      if(!json.response.liked_posts[0].photos || !json.response.liked_posts[0].photos.length) {
+      if(!json.response.liked_posts[0] || !json.response.liked_posts[0].photos || !json.response.liked_posts[0].photos.length) {
         console.warn('found post with no images!')
         return getImage();
       }
