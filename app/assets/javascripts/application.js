@@ -53,5 +53,6 @@ $(function() {
     });
   }
 
+  setInterval(getImage, 5000);
   getImage();
 });
