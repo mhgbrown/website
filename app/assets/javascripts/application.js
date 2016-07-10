@@ -16,6 +16,8 @@
 $(function() {
 
   var MAX_OFFSET = 1000;
+  var SCROLL_TOP_THRESHOLD = 75;
+  var oldScrollTop = $(window).scrollTop();
 
   function getImage() {
     var offset = Math.floor(Math.random() * MAX_OFFSET);
@@ -53,6 +55,22 @@ $(function() {
     });
   }
 
+  function swapImages(event) {
+    var newScrollTop = $(window).scrollTop();
+
+    if(Math.abs(newScrollTop - oldScrollTop) > SCROLL_TOP_THRESHOLD) {
+      var $images = $('img');
+      var rindex = Math.floor(Math.random() * $images.length);
+      $('img:last').swap($('img:eq(' + rindex +')'));
+      console.dir(newScrollTop, oldScrollTop);
+      oldScrollTop = newScrollTop;
+
+    }
+  }
+
   setInterval(getImage, 5000);
   getImage();
+
+  // disable for now
+  // $(window).on('scroll', swapImages);
 });
