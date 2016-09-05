@@ -3,14 +3,11 @@
 <head>
   <title>Morgan Brown</title>
   <meta charset="utf-8">
-  <link rel="dns-prefetch" href="//ajax.googleapis.com">
-  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Morgan Brown is a Berlin-based software engineer interested in art, psychology, and linguistics.">
+  <meta name="description" content="Morgan Brown is a Berlin-based Software Engineer.">
   <meta name="keywords" content="morgan brown,software,software engineering,web,art">
   <meta name="author" content="Morgan Brown">
-  <link href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:600' rel='stylesheet' type='text/css'>
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" integrity="sha256-K3Njjl2oe0gjRteXwX01fQD5fkk9JFFBdUHy/h38ggY=" crossorigin="anonymous" />
   <%= stylesheet_link_tag "application", :media => :all %>
   <%= favicon_link_tag "favicon.png", :type => "image/png" %>
   <%= csrf_meta_tags %>
@@ -20,9 +17,16 @@
       <%= yield :content %>
   </main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.js"></script>
 <%= javascript_include_tag "application" %>
-<%= google_analytics_tag %>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-24597738-1', 'auto');
+  ga('send', 'pageview');
+</script>
 <!--
 thousands are sailing
 the same self the only self
