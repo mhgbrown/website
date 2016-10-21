@@ -5,6 +5,7 @@ gem 'rails', '4.2.5'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'unicorn'
+gem 'dynopoker'
 
 group :production do
   gem 'pg'
