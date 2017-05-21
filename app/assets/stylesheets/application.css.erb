@@ -25,9 +25,7 @@
 }
 
 * {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 h1,
@@ -84,13 +82,17 @@ html, body {
 	margin: 0;
 }
 
+html {
+  background-color: black;
+}
+
 body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;
   font-family: 'Times New Roman', serif;
-  background-color: black;
+  background-color: transparent;
   color: white;
   font-size: 200%;
   text-align: center;
@@ -117,6 +119,11 @@ body {
   top: 0;
   left: 0;
   visibility: hidden;
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ -webkit-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
 }
 
 @media (max-width: 480px) {
@@ -149,6 +156,15 @@ body {
   -webkit-transform: rotate(-10deg);
   transform: rotate(-10deg);
   color: red;
+}
+
+.pixelated {
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -o-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 
