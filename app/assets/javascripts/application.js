@@ -68,6 +68,7 @@ $(function() {
     }
   }
 
+  $('.work').randomize()
   setInterval(getImage, 5000);
   getImage();
 

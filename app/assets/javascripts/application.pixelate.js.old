@@ -1,0 +1,187 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// the compiled file.
+//
+// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
+// GO AFTER THE REQUIRES BELOW.
+//
+//= require_tree .
+//= require_self
+
+$(function() {
+
+  var MAX_OFFSET = 1000;
+  var SCROLL_TOP_THRESHOLD = 75;
+  var IMAGE_INTERVAL = 10000;
+  var MAX_NUM_IMAGES = 20;
+
+  var oldScrollTop = $(window).scrollTop();
+  var ticking = false;
+  var $cover = $('.cover');
+  var coverHeight = $cover.height();
+  var coverWidth = $cover.width();
+  // var $canvas = null;
+  // var origin = location.protocol + '//' + location.hostname + '/';
+
+  function getImage() {
+    var offset = Math.floor(Math.random() * MAX_OFFSET);
+
+    $.getJSON('http://api.tumblr.com/v2/blog/discom4rt.tumblr.com/likes?callback=?', {
+      api_key: 'ok1dCktUCXTyOgG0vlyhxcW7oQ4lxUZl0QfZkoEiwwjvU2ZKAv',
+      offset: offset,
+      limit: 1
+    }).then(function(json) {
+      var $moodSetter = $('<img>');
+
+      if(!json.response.liked_posts[0] || !json.response.liked_posts[0].photos || !json.response.liked_posts[0].photos.length) {
+        console.warn('found post with no images!')
+        return getImage();
+      }
+
+      var photos = json.response.liked_posts[0].photos;
+      var rpindex = Math.floor(Math.random() * photos.length);
+      var url = photos[rpindex].original_size.url;
+      var encodedURL = btoa(url);
+
+      $moodSetter.attr({
+        src: '/image_proxy/' + encodedURL
+      }).on('load', function(event) {
+        $moodSetter.addClass('mood-setter');
+        $('#main').append($moodSetter);
+
+        var pt = (Math.random() * ($(document).height() - $moodSetter[0].height));
+        var pl = (Math.random() * ($(document).width() - $moodSetter[0].width));
+
+        $moodSetter.css({
+          top: pt,
+          left: pl,
+          visibility: 'visible'
+        });
+
+        var $images = $('.mood-setter');
+        if($images.length > MAX_NUM_IMAGES) {
+          $images.first().remove();
+        }
+
+        // renderScreen();
+      });
+    });
+  }
+
+  function pixelateScreen(canvas) {
+      // var $lastCanvas = $('canvas');
+      var $canvas = $(canvas);
+      var width = parseInt($canvas.css('width'), 10);
+      var height = parseInt($canvas.css('height'), 10);
+      var ctx = canvas.getContext('2d');
+
+      var size = 10 / 100, // blocks.value / 100,
+          w = canvas.width * size,
+          h = canvas.height * size;
+
+      var img = new Image();
+      img.src = canvas.toDataURL('image/png');
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // draw the original image at a fraction of the final size
+      ctx.drawImage(img, 0, 0, w, h);
+
+      // turn off image aliasing
+      ctx.msImageSmoothingEnabled = false;
+      ctx.mozImageSmoothingEnabled = false;
+      ctx.webkitImageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
+
+      //invert colors
+      var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      var data = imageData.data;
+      for(var i = 0; i < data.length; i += 4) {
+        // red
+        data[i] = 255 - data[i];
+        // green
+        data[i + 1] = 255 - data[i + 1];
+        // blue
+        data[i + 2] = 255 - data[i + 2];
+      }
+
+      // overwrite original image
+      ctx.putImageData(imageData, 0, 0);
+
+      img.src = canvas.toDataURL('image/png');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // enlarge the minimized image to full size
+      ctx.drawImage(img, 0, 0, w * 2, h * 2, 0, 0, width, height);
+      // ctx.drawImage(img, 0, 0, w, h, 0, 0, canvas.width, canvas.height);
+
+      // $lastCanvas.remove();
+      // $('canvas').remove();
+      document.body.appendChild(canvas);
+      $cover.show();
+  }
+
+  function renderScreen() {
+    var options = {
+      logging: true,
+      removeContainer: true
+      // width: 100,
+      // height: 100
+      // allowTaint: true
+    };
+
+    // if($('canvas').length) {
+    //   options.canvas = $canvas[0];
+    // }
+
+    $('canvas').remove();
+    $cover.hide();
+    html2canvas(document.body, options).then(pixelateScreen)
+  }
+
+  function trackClipPath(event) {
+    requestTick(event);
+  }
+
+  function requestTick(event) {
+    if(!ticking) {
+      requestAnimationFrame(function() {
+        update(event);
+      });
+      ticking = true;
+    }
+  }
+
+  /**
+   * Our animation callback
+   */
+  function update(event) {
+    var $canvas = $('canvas');
+    var dec = 'circle(100px at ' + event.pageX + 'px ' +  event.pageY + 'px)';
+
+    $cover.css({
+      'top': event.pageY - coverHeight / 2,
+      'left': event.pageX - coverWidth / 2
+    });
+
+    $canvas.css({
+      '-webkit-clip-path': dec,
+      '-moz-clip-path': dec,
+      'clip-path': dec
+    });
+
+    // allow further rAFs to be called
+    ticking = false;
+  }
+
+  $(document).on('mousemove touchmove', trackClipPath);
+  setInterval(getImage, IMAGE_INTERVAL);
+  getImage();
+
+  // setTimeout(function(){renderScreen();},0);
+  // renderScreen();
+
+});

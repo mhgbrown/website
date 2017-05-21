@@ -83,7 +83,7 @@ html, body {
 }
 
 html {
-  background-color: black;
+  background-color: white;
 }
 
 body {
@@ -98,10 +98,27 @@ body {
   text-align: center;
   cursor: default;
   text-shadow:
-   -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
+   -2px -2px 0 #00ff00,
+    2px -2px 0 #000,
+   -2px 2px 0 #ff0000,
+    2px 2px 0 #0000ff;
+}
+
+a {
+  transition: text-shadow 250ms ease;
+  text-shadow:
+   -2px -2px 0 #00ff00,
+    2px -2px 0 #000,
+   -2px 2px 0 #ff0000,
+    2px 2px 0 #0000ff;
+}
+
+a:hover {
+  text-shadow:
+   2px 2px 0 #00ff00,
+    -2px 2px 0 #000,
+   2px -2px 0 #ff0000,
+    -2px -2px 0 #0000ff;
 }
 
 .content {
