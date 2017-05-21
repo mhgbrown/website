@@ -36,19 +36,18 @@ h3 {
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 1.75rem;
   font-weight: normal;
   margin: 18px 0 0 0;
-  line-height: 0.8em;
 }
 
 h2 {
-  font-size: 3em;
+  font-size: 1.75rem;
   font-weight: normal;
 }
 
 h3 {
-  font-size: 2.34em;
+  font-size: 1.5rem;
   font-weight: normal;
 }
 
@@ -84,6 +83,7 @@ html, body {
 
 html {
   background-color: white;
+  font-size: 32px;
 }
 
 body {
@@ -94,7 +94,6 @@ body {
   font-family: 'Times New Roman', serif;
   background-color: transparent;
   color: white;
-  font-size: 200%;
   text-align: center;
   cursor: default;
   text-shadow:
@@ -105,6 +104,7 @@ body {
 }
 
 a {
+  -webkit-transition: text-shadow 250ms ease;
   transition: text-shadow 250ms ease;
   text-shadow:
    -2px -2px 0 #00ff00,
@@ -116,9 +116,9 @@ a {
 a:hover {
   text-shadow:
    2px 2px 0 #00ff00,
-    -2px 2px 0 #000,
+  -2px 2px 0 #000,
    2px -2px 0 #ff0000,
-    -2px -2px 0 #0000ff;
+  -2px -2px 0 #0000ff;
 }
 
 .content {
@@ -144,8 +144,14 @@ a:hover {
 }
 
 @media (max-width: 480px) {
-  body {
-    font-size: 150%;
+  html {
+    font-size: 28px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-size: 1.5rem;
   }
 
   .mood-setter {
