@@ -16,8 +16,8 @@
 $(function() {
 
   var MAX_OFFSET = 1000;
-  var SCROLL_TOP_THRESHOLD = 75;
-  var oldScrollTop = $(window).scrollTop();
+  var MAX_IMAGES_COUNT = 10;
+  var IMAGE_LOAD_INTERVAL = 2500
 
   function getImage() {
     var offset = Math.floor(Math.random() * MAX_OFFSET);
@@ -40,6 +40,12 @@ $(function() {
       $moodSetter.attr({
         src: photos[rpindex].original_size.url
       }).on('load', function(event) {
+        var $images = $('img')
+
+        if ($images.length > MAX_IMAGES_COUNT) {
+          $images.first().remove()
+        }
+
         $moodSetter.addClass('mood-setter');
         $('body').append($moodSetter);
 
@@ -55,23 +61,7 @@ $(function() {
     });
   }
 
-  function swapImages(event) {
-    var newScrollTop = $(window).scrollTop();
-
-    if(Math.abs(newScrollTop - oldScrollTop) > SCROLL_TOP_THRESHOLD) {
-      var $images = $('img');
-      var rindex = Math.floor(Math.random() * $images.length);
-      $('img:last').swap($('img:eq(' + rindex +')'));
-      console.dir(newScrollTop, oldScrollTop);
-      oldScrollTop = newScrollTop;
-
-    }
-  }
-
   $('.work').randomize()
-  setInterval(getImage, 5000);
+  setInterval(getImage, IMAGE_LOAD_INTERVAL);
   getImage();
-
-  // disable for now
-  // $(window).on('scroll', swapImages);
 });
