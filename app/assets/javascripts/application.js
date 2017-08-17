@@ -8,7 +8,7 @@
 // the compiled file.
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
+// GO AFTER THE REQUIRES BELOW
 //
 //= require_tree .
 //= require_self
@@ -18,6 +18,10 @@ $(function() {
   var MAX_OFFSET = 1000;
   var MAX_IMAGES_COUNT = 10;
   var IMAGE_LOAD_INTERVAL = 2500
+  var $imagesContainer = $('.images')
+  var currentWidth = 0;
+  var isMobile = $(window).width() <= 480;
+  var imageThreshold = isMobile ? 2.5 : 1.25;
 
   function getImage() {
     var offset = Math.floor(Math.random() * MAX_OFFSET);
@@ -37,27 +41,21 @@ $(function() {
       var photos = json.response.liked_posts[0].photos;
       var rpindex = Math.floor(Math.random() * photos.length);
 
-      $moodSetter.attr({
-        src: photos[rpindex].original_size.url
-      }).on('load', function(event) {
+      $moodSetter.on('load', function(event) {
         var $images = $('img')
 
-        if ($images.length > MAX_IMAGES_COUNT) {
+        $moodSetter.addClass('mood-setter');
+        $imagesContainer.append($moodSetter);
+
+        currentWidth += $(this).width()
+
+        if (currentWidth > imageThreshold * $(window).width()) {
+          currentWidth -= $images.first().width()
           $images.first().remove()
         }
-
-        $moodSetter.addClass('mood-setter');
-        $('body').append($moodSetter);
-
-        var pt = (Math.random() * ($(document).height() - $moodSetter[0].height));
-        var pl = (Math.random() * ($(document).width() - $moodSetter[0].width));
-
-        $moodSetter.css({
-          top: pt,
-          left: pl,
-          visibility: 'visible'
-        });
-      });
+      }).attr({
+        src: photos[rpindex].original_size.url
+      })
     });
   }
 

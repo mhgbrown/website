@@ -31,43 +31,27 @@
 h1,
 h2,
 h3 {
-  margin: 36px 0 0 0;
-  letter-spacing: -0.03em;
-}
-
-h1 {
-  font-size: 1.75rem;
-  font-weight: normal;
-  margin: 18px 0 0 0;
-}
-
-h2 {
-  font-size: 1.75rem;
-  font-weight: normal;
-}
-
-h3 {
-  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
   font-weight: normal;
 }
 
 p {
-  margin: 18px 0 18px 0;
+  margin: 0 0 1rem 0;
 }
 
 a,
 a:visited {
   text-decoration: none;
-  color: white;
+  border-bottom: 1px solid blue;
+  color: blue;
 }
 
 a:hover {
-  font-style: italic;
 }
 
 a:focus {
   outline: none;
-  font-style: italic;
 }
 
 ul {
@@ -76,80 +60,58 @@ ul {
   margin: 0;
 }
 
+ul li {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+html {
+  text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  cursor: default;
+}
+
 html, body {
 	padding: 0;
 	margin: 0;
 }
 
-html {
-  background-color: black;
-  font-size: 32px;
-}
-
-body {
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-overflow-scrolling: touch;
-  font-family: 'Times New Roman', serif;
-  background-color: transparent;
-  color: white;
-  text-align: center;
-  cursor: default;
-  text-shadow:
-   2px -2px 0 orange,
-  -2px 2px 0 purple;
-}
-
-a {
-  -webkit-transition: text-shadow 250ms ease;
-  transition: text-shadow 250ms ease;
-  text-shadow:
-   2px -2px 0 orange,
-  -2px 2px 0 purple;
-}
-
-a:hover {
-  text-shadow:
-  -2px 2px 0 orange,
-   2px -2px 0 purple;
-}
-
 .content {
-  max-width: 480px;
-  margin: 0 auto;
   position: relative;
   z-index: 2;
   margin-bottom: 36px;
 }
 
+.images {
+  height: 50vh;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
 .mood-setter {
-  position: absolute;
-  max-width: 40%;
-  height: auto;
-  top: 0;
-  left: 0;
-  visibility: hidden;
+  width: auto;
+  height: 100%;
  -moz-user-select: none;
  -khtml-user-select: none;
  -webkit-user-select: none;
  -ms-user-select: none;
  user-select: none;
+ vertical-align: bottom;
 }
 
 @media (max-width: 480px) {
-  html {
-    font-size: 28px;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-size: 1.5rem;
-  }
-
   .mood-setter {
-    max-width: 60%;
   }
 }
 
