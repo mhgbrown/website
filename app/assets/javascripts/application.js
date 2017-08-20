@@ -26,7 +26,7 @@ $(function() {
   function getImage() {
     var offset = Math.floor(Math.random() * MAX_OFFSET);
 
-    $.getJSON('http://api.tumblr.com/v2/blog/discom4rt.tumblr.com/likes?callback=?', {
+    $.getJSON('http://api.tumblr.com/v2/blog/mhgbrown.tumblr.com/likes?callback=?', {
       api_key: 'ok1dCktUCXTyOgG0vlyhxcW7oQ4lxUZl0QfZkoEiwwjvU2ZKAv',
       offset: offset,
       limit: 1
