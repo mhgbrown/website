@@ -53,6 +53,8 @@ $(function() {
           currentWidth -= $images.first().width()
           $images.first().remove()
         }
+
+        setTimeout(getImage, IMAGE_LOAD_INTERVAL);
       }).attr({
         src: photos[rpindex].original_size.url
       })
@@ -60,6 +62,5 @@ $(function() {
   }
 
   $('.work').randomize()
-  setInterval(getImage, IMAGE_LOAD_INTERVAL);
   getImage();
 });
