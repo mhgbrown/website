@@ -1,0 +1,149 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+*/
+
+::selection {
+  background: yellow;
+  color: red;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: yellow;
+  color: red;
+  text-shadow: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+p {
+  margin: 0 0 1rem 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  border-bottom: 1px solid blue;
+  color: blue;
+}
+
+a:hover {
+}
+
+a:focus {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+html {
+  text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  cursor: default;
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 36px;
+}
+
+.images {
+  height: 50vh;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.mood-setter {
+  width: auto;
+  height: 100%;
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ -webkit-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+ vertical-align: bottom;
+}
+
+@media (max-width: 480px) {
+  .mood-setter {
+  }
+}
+
+.hell-to-the-no {
+  display: inline-block;
+  position: relative;
+}
+
+.hell-to-the-no:after {
+  content: "naw";
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  position: absolute;
+  left: 0;
+  top: calc(50%);
+  border: 1px solid black;
+  font-size: 18px;
+  -ms-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+  color: red;
+}
+
+.pixelated {
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -o-crisp-edges;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+
