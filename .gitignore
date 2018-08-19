@@ -5,4 +5,5 @@
 *DS_Store
 .powrc
 .ruby-version
+npm-debug.log
 
